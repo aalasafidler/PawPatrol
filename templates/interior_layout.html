@@ -1,0 +1,30 @@
+{% load static from staticfiles %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <meta charset="utf-8">
+        <title>Paw Patrol</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body>
+
+        <div class="navbar" style="width:94%; float:left; display:inline;">
+            <ul>
+                <li><a href="/your_pet">Your Pet</a></li>
+                <li><a href="/stats">Stats</a></li>
+            </ul></div>
+<ul style="margin-right:0px; position:absolute; display:inline; clear:right; margin-left:0px; margin-top:1px; width:8%;">
+                <li><a href="/loggingout">Log Out</a></li>
+            </ul>
+<br >
+
+        <div class="wrapper">
+PET DETAILS
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,27 @@
+{% load static from staticfiles %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <meta charset="utf-8">
+        <title>Paw Patrol</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body>
+
+        <div class="navbar">
+            <ul>
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </div>
+        <div class="wrapper">
+            <div id="logo">
+                    <img src="{% static 'logo.png' %}" alt="Logo"></div>
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    </body>
+</html>
