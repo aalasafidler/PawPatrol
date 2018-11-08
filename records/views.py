@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Record
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+@login_required(login_url="/accounts/login/")
 def records(request):
     records = Record.objects.all()#.order_by(dateTime)
     # The dictionary outputs the variable records (above)
@@ -13,3 +13,4 @@ def records(request):
 @login_required(login_url="/accounts/login/")
 def record_create(request):
     return render(request, 'records/record_create.html')
+    #return redirect('/')
