@@ -6,12 +6,14 @@
 <p> Welcome to Your Pet's Records</p>
 <div class ="records">
 
+    <img src="{{ record.thumb.url }}">
     {% for record in records %}
     <div class="individual_record">
         <h2>Feed #{{record.feedID}}</h2>
         <p>Time fed: {{record.dateTime}}</p>
         <p>Amount leftover:{{record.amountLeftOver}}</p>
         <p>Amount dispersed:{{record.amountDispensed}}</p>
+            <!-- <img src="{{ record.thumb.url }}"> -->
     </div>
     {% endfor %}
 </div>

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Record
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def records(request):
@@ -8,3 +9,7 @@ def records(request):
     # when rendered. Display it in the records.html template
     # via "template tags" = {% python code %} and {{data}}
     return render(request, 'records/records.html', {'records': records})
+
+@login_required(login_url="/accounts/login/")
+def record_create(request):
+    return render(request, 'records/record_create.html')

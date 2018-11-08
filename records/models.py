@@ -9,6 +9,7 @@ class Record(models.Model):
     amountLeftOver = models.IntegerField(default='0')
     amountDispensed = models.IntegerField(default='0')
     additionalInfo = models.TextField()
+    """thumb = models.ImageField(default='default.png', blank=True)"""
 
 #python manage.py makemigrations
 #python manage.py migrate
