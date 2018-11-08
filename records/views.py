@@ -1,6 +1,7 @@
-from django.shortcuts import render
-from .models import Record
+from django.shortcuts import render, redirect
+from .models import Record, Pet
 from django.contrib.auth.decorators import login_required
+from . import forms
 
 @login_required(login_url="/accounts/login/")
 def records(request):
@@ -12,5 +13,35 @@ def records(request):
 
 @login_required(login_url="/accounts/login/")
 def record_create(request):
-    return render(request, 'records/record_create.html')
+    if request.method == 'POST':
+        form = forms.CreateRecord(request.POST, request.FILES)
+        if form.is_valid():
+            # save this record to database
+            instance = form.save(commit=False)
+            instance.author = request.user
+            instance.save()
+            return redirect('records')
+    else:
+        form = forms.CreateRecord()
+    return render(request, 'records/record_create.html', {'form': form})
+    #return redirect('/')
+
+@login_required(login_url="/accounts/login/")
+def pets(request):
+    pets = Pet.objects.all()
+    return render(request, 'records/pets.html', {'pets': pets})
+
+@login_required(login_url="/accounts/login/")
+def add_pet(request):
+    if request.method == 'POST':
+        form = forms.AddPet(request.POST, request.FILES)
+        if form.is_valid():
+            # save this record to database
+            instance = form.save(commit=False)
+            instance.author = request.user
+            instance.save()
+            return redirect('pets')
+    else:
+        form = forms.AddPet()
+    return render(request, 'records/pet_create.html', {'form': form})
     #return redirect('/')

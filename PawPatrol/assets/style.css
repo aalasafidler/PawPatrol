@@ -3,9 +3,23 @@ body{
     background: #ffffff;
 }
 
+#footerText{
+    background-color: pink;
+}
+
+.records{
+    margin: 0 auto;
+}
+
 h1{
     text-align: center;
     color: #FCA205;
+}
+
+.homepage_intro{
+    margin:0;
+    background-color:grey;
+    color:white;
 }
 
 .navbar{
@@ -160,3 +174,15 @@ padding:10px;
         margin-top: 0;
     }
 }
+
+.logout_button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+

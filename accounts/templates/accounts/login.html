@@ -1,14 +1,14 @@
 {% extends 'exterior_layout.html' %}
 
 {% block content %}
-    <h1>Log In</h1>
-    <!-- same as 'accounts/login' -->
-        <form class="site-form" action="{% url 'accounts:login' %}" method="post">
-            {% csrf_token %}
-            {{ form }}
+<h1>Log In</h1>
+<!-- same as 'accounts/login' -->
+<form class="site-form" action="{% url 'accounts:login' %}" method="post" style="padding:5px;">
+    {% csrf_token %}
+    {{ form }}
             {% if request.GET.next %}
                 <input type="hidden" name="next" value="{{ request.GET.next }}">
             {% endif %}
-            <input type="submit" value="Log In">
+            <input type="submit" value="Log In" style="margin:auto 0; margin-top: 20px; margin-left: 40%; margin-bottom: 12%;">
         </form>
 {% endblock %}

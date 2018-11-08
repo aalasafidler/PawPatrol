@@ -2,10 +2,23 @@
 
 {% block content %}
 <h1>Sign up</h1>
-<form class="site-form" action="/accounts/signup/" method="post">
+<form class="site-form" action="/accounts/signup/" method="post" style="padding:5px;">
     {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Sign Up">
+    <!--{{ form }}-->
+    
+    <b>Username:</b>
+    <input type="text" name="username" required=True>
+    <br><br>
+    
+    <b>Password:</b>
+    <input type="password" name="password1" required=True>
+    <span class="helptext">8 characters min.</span>
+    <br><br>
+    
+    <b>Password confirmation:</b>
+    <input type="password" name="password2" required=True>
+
+    <input type="submit" value="Sign Up" style="margin:auto 0; margin-top: 20px; margin-left: 40%; margin-bottom: 10%;">
 </form>
 
 {% endblock %}

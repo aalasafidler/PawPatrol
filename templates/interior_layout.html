@@ -12,21 +12,21 @@
 
         <div class="navbar" style="width:94%; float:left; display:inline;">
             <ul>
-                <li><a href="/your_pet">Your Pet</a></li>
+                <li><a href="/your-pet">Your Pet</a></li>
                 <li><a href="/stats">Stats</a></li>
             </ul></div>
-<ul style="margin-right:0px; position:absolute; display:inline; clear:right; margin-left:0px; margin-top:1px; width:8%;">
-                <li>
+<ul class="logout_button" style="margin-right:0px; position:absolute; display:inline; clear:right; margin-left:0px; margin-top:1px; width:auto;">
+<!-- <li> -->
                     <form class="logout-link" action="/accounts/logout/" method="POST">
                         {% csrf_token %}
-                        <button type="submit">Log Out</button>
+                        <button class="logout_button" type="submit">Log Out</button>
                     </form>
-                </li>
+                <!-- </li> -->
             </ul>
 <br >
 
         <div class="wrapper">
-PET DETAILS
+            <p style="text-transform: uppercase; font-size: 10px;">Logged in as: {{ request.user }}</p>     
             {% block content %}
             {% endblock %}
         </div>

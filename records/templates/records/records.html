@@ -2,9 +2,8 @@
 
 {% block content %}
 
-<h1>Pet Records</h1>
-<p> Welcome to Your Pet's Records</p>
-<div class ="records">
+<h1>Welcome to Your Pet's Records</h1>
+<div class="records" style="margin-left: 20%;">
 
     <img src="{{ record.thumb.url }}">
     {% for record in records %}
@@ -13,6 +12,7 @@
         <p>Time fed: {{record.dateTime}}</p>
         <p>Amount leftover:{{record.amountLeftOver}}</p>
         <p>Amount dispersed:{{record.amountDispensed}}</p>
+        <p>Fed by: {{request.user}}</p>
             <!-- <img src="{{ record.thumb.url }}"> -->
     </div>
     {% endfor %}

@@ -2,8 +2,8 @@
 
 {% block content %}
 
-<h1>Create a New Feeding Records</h1>
-<form class="site-form" action="{% url 'create' %}" method="post">
+<h1>Add a New Pet</h1>
+<form class="site-form" action="{% url 'addpet' %}" method="post">
     {% csrf_token %}
     {{form}}
     <input type="submit" value="Create">

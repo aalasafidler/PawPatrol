@@ -14,9 +14,10 @@ urlpatterns = [
     # app's URLs.py file too.
     url(r'^records/', include('records.urls')),
     url(r'^accounts/', include('accounts.urls')),
+    url(r'^stats/', include('stats.urls')),
     url(r'^about/$', views.about, name="about"),
+    url(r'^your-pet/$', views.your_pet, name="your-pet"),
     url(r'^$', views.homepage, name="main_home"),
-
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -9,3 +9,8 @@ def homepage(request):
 def about(request):
     # return HttpResponse('about')
     return render(request, 'about.html')
+
+def your_pet(request):
+    # return HttpResponse('about')
+    return render(request, 'your-pet.html')
+

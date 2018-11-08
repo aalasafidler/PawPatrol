@@ -1,0 +1,18 @@
+{% extends 'interior_layout.html' %}
+
+{% block content %}
+
+<h1>Your Saved Pets</h1>
+<div class="pets" style="margin-left: 20%;">
+
+    <img src="{{ pets.petImage.url }}">
+    {% for pet in pets %}
+    <div class="individual_pet">
+        <h2>Pet: {{pet.petName}}</h2>
+        <img src="{{ pet.petImage.url }}">
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

@@ -16,11 +16,19 @@
                 <li><a href="/accounts/login">Login</a></li>
             </ul>
         </div>
-        <div class="wrapper">
+
+        <div class="wrapper" style="margin-top:-20px;">
             <div id="logo">
-                    <img src="{% static 'logo.png' %}" alt="Logo"></div>
+                    <a href="/"><img src="{% static 'logo.png' %}" alt="Logo"></a></div>
             {% block content %}
             {% endblock %}
+        </div>
+
+    <div class="footer" style="position:fixed; left: 0; bottom: 0; width: 100%; background-color: grey; margin-top:20px; color: white; text-align: center;">
+        
+        <div id="socialMediaIcons" style="margin: 5px; display: inline-block;"><a href=""><img src="/media/fb.png" width="2%" style="margin-right:7px;"></a><a href=""><img src="/media/tw.png" width="2%" style="margin-right:7px;"></a><a href=""><img src="/media/ins.png" width="2%" style="margin-right:7px;"></a></div>
+        
+        <div id="footerText" style="display: inline-block;">For any queries or comments please email admin@pawpatrol.com</div>
         </div>
 
     </body>
