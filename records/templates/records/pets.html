@@ -4,12 +4,12 @@
 
 <h1>Your Saved Pets</h1>
 <div class="pets" style="margin-left: 20%;">
+    <!-- <p> {{ request.numberOfPets }} </p> -->
 
-    <img src="{{ pets.petImage.url }}">
     {% for pet in pets %}
     <div class="individual_pet">
         <h2>Pet: {{pet.petName}}</h2>
-        <img src="{{ pet.petImage.url }}">
+        <img src="{{ pet.petImage.url }}" width="120px">
     </div>
     {% endfor %}
 </div>

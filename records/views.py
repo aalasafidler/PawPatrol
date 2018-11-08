@@ -29,7 +29,8 @@ def record_create(request):
 @login_required(login_url="/accounts/login/")
 def pets(request):
     pets = Pet.objects.all()
-    return render(request, 'records/pets.html', {'pets': pets})
+    numberOfPets = len(pets)
+    return render(request, 'records/pets.html', {'pets': pets}, numberOfPets)
 
 @login_required(login_url="/accounts/login/")
 def add_pet(request):
