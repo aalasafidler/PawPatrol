@@ -6,6 +6,6 @@ urlpatterns = [
     url(r'^create/$', views.record_create, name="create"),
     url(r'^$', views.records, name="records"),
     url(r'^addpet/$', views.add_pet, name="addpet"),
-    url(r'^pets/$', views.pets, name="pets"),
+    url(r'^pets/$', views.your_pet, name="yourPet"),
     url(r'^your-pet/$', views.your_pet, name="yourPet"),
 ]

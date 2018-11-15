@@ -45,7 +45,7 @@ def add_pet(request):
             instance = form.save(commit=False)
             instance.author = request.user
             instance.save()
-            return redirect('pets')
+            return redirect('yourPet')
     else:
         form = forms.AddPet()
     return render(request, 'records/pet_create.html', {'form': form})
