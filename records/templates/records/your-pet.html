@@ -1,0 +1,24 @@
+{% extends 'interior_layout.html' %}
+
+{% block content %}
+
+<!-- http://127.0.0.1:8000/records/your-pet/ -->
+<h1>Your Pets</h1>
+<div style="font-size:medium; margin-left: 0%; background:transparent; text-align:center;">
+    <p>You have {{number}} saved pets.</p></div>
+<div id="family_wrapper" style="margin: 0; padding:1%; background:#fbe3b3; text-align:left;">
+        {% for pet in pets %}
+
+    <div class="individual_pet" style="background:white; margin-bottom:1%; padding-right:1%; padding-bottom:1%; padding-left:1%; width:auto; text-align:center; display:inline-block;" >
+        <h2>{{pet.petName}}</h2>
+        <img src="{{ pet.petImage.url }}" width="300px"></div>
+    {% endfor %}
+</div>
+<div style="font-size:medium; margin-bottom: 5%; background:transparent; text-align:center;"><h2>Adding to the family?</h2>
+    <a href="/records/addpet"><button>Add new pet</button></a></div>
+
+
+
+    </div>
+
+{% endblock %}

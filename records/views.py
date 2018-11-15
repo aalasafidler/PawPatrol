@@ -6,9 +6,6 @@ from . import forms
 @login_required(login_url="/accounts/login/")
 def records(request):
     records = Record.objects.all()#.order_by(dateTime)
-    # The dictionary outputs the variable records (above)
-    # when rendered. Display it in the records.html template
-    # via "template tags" = {% python code %} and {{data}}
     return render(request, 'records/records.html', {'records': records})
 
 @login_required(login_url="/accounts/login/")
@@ -18,7 +15,8 @@ def record_create(request):
         if form.is_valid():
             # save this record to database
             instance = form.save(commit=False)
-            instance.author = request.user
+            #instance.author = request.user
+            instance.author = string(request.user)
             instance.save()
             return redirect('records')
     else:
@@ -31,6 +29,12 @@ def pets(request):
     pets = Pet.objects.all()
     numberOfPets = len(pets)
     return render(request, 'records/pets.html', {'pets': pets}, numberOfPets)
+
+@login_required(login_url="/accounts/login/")
+def your_pet(request):
+    pets = Pet.objects.filter(author_id=request.user)
+    numberOfPets = len(pets)
+    return render(request, 'records/your-pet.html', {'pets': pets, 'number': numberOfPets},)
 
 @login_required(login_url="/accounts/login/")
 def add_pet(request):

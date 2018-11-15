@@ -12,7 +12,7 @@ class Record(models.Model):
     amountDispensed = models.IntegerField(default='0')
     additionalInfo = models.TextField()
     """thumb = models.ImageField(default='default.png', blank=True)"""
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
 #python manage.py makemigrations
 #python manage.py migrate

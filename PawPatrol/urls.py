@@ -16,8 +16,7 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
     url(r'^stats/', include('stats.urls')),
     url(r'^about/$', views.about, name="about"),
-    url(r'^your-pet/$', views.your_pet, name="your-pet"),
-    url(r'^$', views.homepage, name="main_home"),
+    url(r'^$', views.index, name="main_home"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

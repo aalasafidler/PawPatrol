@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^$', views.records, name="records"),
     url(r'^addpet/$', views.add_pet, name="addpet"),
     url(r'^pets/$', views.pets, name="pets"),
+    url(r'^your-pet/$', views.your_pet, name="yourPet"),
 ]

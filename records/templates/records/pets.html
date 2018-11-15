@@ -2,9 +2,10 @@
 
 {% block content %}
 
+<!-- This is whats seen via http://127.0.0.1:8000/records/pets/-->
+
 <h1>Your Saved Pets</h1>
 <div class="pets" style="margin-left: 20%;">
-    <!-- <p> {{ request.numberOfPets }} </p> -->
 
     {% for pet in pets %}
     <div class="individual_pet">

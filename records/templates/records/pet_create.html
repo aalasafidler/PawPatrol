@@ -2,11 +2,13 @@
 
 {% block content %}
 
+<!-- This page contains that form that allows you to add a pet.-->
+
 <h1>Add a New Pet</h1>
 <form class="site-form" action="{% url 'addpet' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{form}}
-    <input type="submit" value="Create">
+    <input type="submit" style="margin-top:5%;" value="Create">
 </form>
 
 {% endblock %}
