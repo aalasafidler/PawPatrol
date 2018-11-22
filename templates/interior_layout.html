@@ -10,17 +10,17 @@
     </head>
     <body>
 
-        <div class="navbar" style="width:94%; float:left; display:inline;">
+        <div class="navbar" style="width:96%; float:left; display:inline;">
             <ul>
                 <li><a href="/records/your-pet">Your Pets</a></li>
                                 <li><a href="/records">Records</a></li>
                 <li><a href="/stats">Stats</a></li>
             </ul></div>
-<ul class="logout_button" style="margin-right:0px; position:absolute; display:inline; clear:right; margin-left:0px; margin-top:1px; width:auto;">
+<ul class="logout_button" style="height:99px; margin-right:0px; background:orange; color:white; border:0px; position:absolute; display:inline; clear:right; margin-left:0px; margin-top:0px; width:auto;">
 <!-- <li> -->
                     <form class="logout-link" action="/accounts/logout/" method="POST">
                         {% csrf_token %}
-                        <button class="logout_button" type="submit">Log Out</button>
+                        <button class="logout_button" style="height:50%; width:auto; background:orange;" type="submit">Log Out</button>
                     </form>
                 <!-- </li> -->
             </ul>
