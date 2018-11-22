@@ -3,7 +3,12 @@
 {% block content %}
 <h1>Statistics on Your Pet</h1>
 <div class="innerStatitics" style="margin-left: 20%;">
-        <h2>check {{pet.petName}}</h2>
+
+    <h2>No. of pets: {{numberofpets2}}</h2>
+
+    <h3>No. of feeds:         {{numberoffeeds2}}</h3>
+<h2>total consumed: {{totalconsumed}} </h2>
+   left over:  {{avgc}}
     Your pet has been fed by PawPatrol # times.<br>
     It's averages consumption is amountDispersed - amountLeftOver/numberOfTimesFed.
 </div>

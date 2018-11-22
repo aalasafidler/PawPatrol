@@ -1,5 +1,5 @@
 from django.db import models
-from django.conf import settings
+from django.db.models import Sum
 from django.contrib.auth.models import User
 
 class Record(models.Model):
@@ -10,11 +10,16 @@ class Record(models.Model):
     additionalInfo = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
+    def ___str___(self):
+        return self.feedID
+
 class Pet(models.Model):
     petName = models.CharField(max_length=100, default='My Pet')
     petImage = models.ImageField(default='default.png', blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
+    def ___str___(self):
+        return self.petName
 
 
 
@@ -22,6 +27,24 @@ class Pet(models.Model):
 
 
 
+
+
+
+
+
+
+
+
+    """from records.models import Pet
+    Pet.objects.all()
+    pet1 = Pet()
+    pet1.petName = "Roger"
+    pet1.save()
+        #
+    thumb = models.ImageField(default='default.png', blank=True)"""
+
+    #def __str__(self):
+    #return self.feedID
 
 
 
@@ -35,8 +58,7 @@ class Pet(models.Model):
 
     #author = models.CharField(max_length=100, default=settings.AUTH_USER_MODEL)
 
-    #def __str__(self):
-    #    return self.petName
+
 
 
 
@@ -45,14 +67,4 @@ class Pet(models.Model):
 
 # python manage.py shell
 # https://www.youtube.com/watch?v=eio1wDUHFJE - for ORM tutorial
-    """from records.models import Pet
-    Pet.objects.all()
-    pet1 = Pet()
-    pet1.petName = "Roger"
-    pet1.save()
-        #
-    thumb = models.ImageField(default='default.png', blank=True)"""
 
-
-    #def __str__(self):
-        #return self.feedID

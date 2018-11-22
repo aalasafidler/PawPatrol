@@ -3,19 +3,38 @@
 {% block content %}
 
 <h1>Welcome to Your Pet's Records</h1>
-<div class="records" style="margin-left: 20%;">
+<div class="records" style="margin: 0 auto;">
 
-    <img src="{{ record.thumb.url }}">
-    {% for record in records %}
+    <table>
+  <tr> <!-- First row-->
+    <th>Feed</th>
+    <th>Time</th>
+    <th>Amount Leftover</th>
+      <th>New Amount Dispensed</th>
+            <th>Comments</th>
+  </tr>
+
+         {% for record in records %}
     <div class="individual_record">
-        <h2>Feed #{{record.feedID}}</h2>
-        <p>Time fed: {{record.dateTime}}</p>
-        <p>Amount leftover:{{record.amountLeftOver}}</p>
-        <p>Amount dispersed:{{record.amountDispensed}}</p>
+  <tr>
+    <td>{{record.feedID}}</td>
+    <td>{{record.dateTime}}</td>
+    <td>{{record.amountLeftOver}}</td>
+      <td>{{record.amountDispensed}}</td>
+            <td>{{record.additionalInfo}}</td>
+  </tr>
             <!-- <img src="{{ record.thumb.url }}"> -->
     </div>
     {% endfor %}
+
+</table>
+
+
+
+    <img src="{{ record.thumb.url }}">
+
 </div>
+
 
 
 {% endblock %}
