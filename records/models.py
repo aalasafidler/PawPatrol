@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models import Sum
 from django.contrib.auth.models import User
 
 class Record(models.Model):
@@ -7,11 +6,18 @@ class Record(models.Model):
     dateTime = models.DateTimeField(auto_now_add=True)
     amountLeftOver = models.IntegerField(default='0')
     amountDispensed = models.IntegerField(default='0')
-    additionalInfo = models.TextField()
+
+    additionalInfo = models.TextField(default="-")
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
     def ___str___(self):
         return self.feedID
+
+    def getAmountConsumed(self):
+        a = self.amountDispensed
+        b = self.amountLeftOver
+        c = a - b
+        return c
 
 class Pet(models.Model):
     petName = models.CharField(max_length=100, default='My Pet')
