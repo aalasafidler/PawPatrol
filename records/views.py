@@ -4,6 +4,7 @@ from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
 from . import forms
 import MySQLdb
+import datetime
 
 
 
@@ -33,14 +34,21 @@ def records(request):
                         db="customerDB")
     cur = db.cursor()
     cur.execute("SELECT * FROM customerDB.customer_details")
-
+    x = 0
+    y = 0
     for row in cur.fetchall():
         print(row)
-        x = row[0]
+        x = row[1]
+        y = row[2]
 
-
-    feed_weight = x
+    bowl_weight = x
+    feed_weight = y
     db.close()
+    feed_id = 1001
+    auth_id = 1
+    pet_name = 'Gregory'
+    dateTime = datetime.datetime.now()
+
     thisauthor = request.user
     thisfeed = Record.objects.all()
     """
@@ -49,7 +57,7 @@ def records(request):
     totaldispensed = Record.objects.aggregate(Sum('amountDispensed'))"""
 
     records = Record.objects.filter(author=request.user)
-    return render(request, 'records/records.html', {'records': records, 'feed_weight': feed_weight, 'this-author': thisauthor, 'thisfeed': thisfeed},)
+    return render(request, 'records/records.html', {'records': records, 'feed_weight': feed_weight, 'bowl_weight': bowl_weight, 'feed_id': feed_id, 'auth_id': auth_id, 'pet_name': pet_name, 'dateTime': dateTime, 'this-author': thisauthor, 'thisfeed': thisfeed},)
 
 @login_required(login_url="/accounts/login/")
 def add_pet(request):

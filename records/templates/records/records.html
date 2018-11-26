@@ -19,23 +19,22 @@
     <div class="individual_record">
   <tr>
     <td>{{record.feedID}}</td>
-          <td>{{record.selectPet.petName}}</td>
+    <td>{{record.selectPet.petName}}</td>
     <td>{{record.dateTime}}</td>
     <td>{{record.amountLeftOver}}</td>
-      <td>{{record.amountDispensed}}</td>
-            <td>{{record.additionalInfo}}</td>
+    <td>{{record.amountDispensed}}</td>
+    <td>{{record.additionalInfo}}</td>
   </tr>
             <!-- <img src="{{ record.thumb.url }}"> -->
     </div>
     {% endfor %}
     <tr>
-      <td>x</td>
-<td>{{feed_weight}}</td>
-<td>{{feed_weight}}</td>
-<td>x</td>
-<td>x</td>
-<td>x</td>
-
+      <td>{{feed_id}}</td>
+      <td>{{pet_name}}</td>
+      <td>{{dateTime}}</td>
+      <td>{{bowl_weight}}</td>
+      <td>{{feed_weight}}<td>
+      <td></td>
     </tr>
 
 </table>
