@@ -14,6 +14,7 @@ class Record(models.Model):
     feedID = models.AutoField(primary_key=True)
     dateTime = models.DateTimeField(auto_now_add=True)
     amountLeftOver = models.IntegerField(default='0')
+    # amountLeftOver = 100
     amountDispensed = models.IntegerField(default='0')
     additionalInfo = models.TextField(default=" ")
     selectPet = models.ForeignKey(Pet, on_delete=models.CASCADE)
@@ -74,4 +75,3 @@ class Record(models.Model):
 
 # python manage.py shell
 # https://www.youtube.com/watch?v=eio1wDUHFJE - for ORM tutorial
-
