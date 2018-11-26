@@ -4,7 +4,7 @@ from . import models
 class CreateRecord(forms.ModelForm):
     class Meta:
         model = models.Record
-        fields = ['feedID', 'amountLeftOver', 'amountDispensed', 'additionalInfo']
+        fields = ['feedID', 'amountLeftOver', 'amountDispensed', 'additionalInfo', 'selectPet']
 
 class AddPet(forms.ModelForm):
     class Meta:

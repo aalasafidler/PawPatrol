@@ -39,14 +39,13 @@ def add_pet(request):
 
 @login_required(login_url="/accounts/login/")
 def record_create(request):
+    pets = Pet.objects.filter(author=request.user)
     if request.method == 'POST':
         form = forms.CreateRecord(request.POST, request.FILES)
-
         print(form)
         if form.is_valid():
             instance = form.save(commit=False)
             instance.author = request.user
-
             instance.save()
             return redirect('records')
     else:
@@ -76,8 +75,14 @@ def stats(request):
     totalConsumed = totaldispensed - totalleftover
     avgconsumed = totalConsumed/numberoffeeds
     avgleftover = totalleftover/numberoffeeds
+    #ludo = myRecords.filter(selectPet="Ludo")
+    #ludoID = ludo[0].feedID
+    #ludoConsumed = ludo[0].amountLeftOver
+    #karen = myRecords.filter(selectPet="Karen")
 
     #individualConsumed = Record.objects.filter(author=request.user)[j].petName
     #individualLeftOver =
 
     return render(request, 'records/stats.html', {'myRecords': myRecords, 'pets': pets, 'this-author': thisauthor, 'numberoffeeds': numberoffeeds, 'totaldispensed': totaldispensed, 'totalleftover':totalleftover, 'numberofpets': numberofpets, 'totalConsumed': totalConsumed, 'avgconsumed': avgconsumed, 'avgleftover': avgleftover},)
+
+#'ludoConsumed': ludoConsumed, 'ludoID': ludoID, aren': karen, '

@@ -6,6 +6,7 @@
 <div class="innerStatitics" style="margin-left: 30%;">
 <h2>Overall</h2>
 
+
     <p>You have used PawPatrol Automatic Feeder {{numberoffeeds}} times.</p>
     <p>Total dispensed: {{ totaldispensed}} grams</p>
     <p>Total left over: {{ totalleftover }} grams</p>
@@ -13,12 +14,15 @@
     <p>Average leftover: {{avgleftover}} </p>
     <p><b>Average consumed: {{avgconsumed}} grams</b></p>
 
+    {{karen.amountLeftOver}}
 {% for p in numberofpets %}
 
     <h2>{{p.petName}}</h2>
     <!-- Each entry in the database has to be linked to a certain pet! -->
     <p><b>Average consumed:</b> {{avgconsumed}} grams</p>
     <p><b>Average leftover:</b> {{avgleftover}} </p>
+
+
 
 {% endfor %}
 

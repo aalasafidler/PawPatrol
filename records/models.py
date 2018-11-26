@@ -1,31 +1,32 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Record(models.Model):
-    feedID = models.AutoField(primary_key=True)
-    dateTime = models.DateTimeField(auto_now_add=True)
-    amountLeftOver = models.IntegerField(default='0')
-    amountDispensed = models.IntegerField(default='0')
-
-    additionalInfo = models.TextField(default="-")
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-
-    def ___str___(self):
-        return self.feedID
-
-    def getAmountConsumed(self):
-        a = self.amountDispensed
-        b = self.amountLeftOver
-        c = a - b
-        return c
 
 class Pet(models.Model):
     petName = models.CharField(max_length=100, default='My Pet')
     petImage = models.ImageField(default='default.png', blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
-    def ___str___(self):
+    def __str__(self):
         return self.petName
+
+class Record(models.Model):
+    feedID = models.AutoField(primary_key=True)
+    dateTime = models.DateTimeField(auto_now_add=True)
+    amountLeftOver = models.IntegerField(default='0')
+    amountDispensed = models.IntegerField(default='0')
+    additionalInfo = models.TextField(default=" ")
+    selectPet = models.ForeignKey(Pet, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+
+    def __str__(self):
+        return "Feed # ", self.feedID
+
+    def getAmountConsumed(self):
+        a = self.amountDispensed
+        b = self.amountLeftOver
+        c = a - b
+        return c
 
 
 
