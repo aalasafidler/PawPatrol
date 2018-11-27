@@ -15,6 +15,36 @@
             <th>Comments</th>
   </tr>
 
+            <div class="individual_record">
+  <tr>
+    <td>1</td>
+          <td>Ludo</td>
+    <td>Nov. 27, 2018, 08:52 a.m.</td>
+    <td>0</td>
+      <td>100</td>
+            <td>First feed! #breakfast</td>
+  </tr>
+                <tr>
+    <td>2</td>
+          <td>Ludo</td>
+    <td>Nov. 27, 2018, 13:01 p.m.</td>
+    <td>15</td>
+      <td>85</td>
+            <td>Lunch: had a bit left over from breakfast?</td>
+  </tr>
+
+
+                  <tr>
+    <td>3</td>
+          <td>Ludo</td>
+    <td>Nov. 27, 2018, 20:53 p.m.</td>
+    <td>0</td>
+      <td>100</td>
+            <td>Poor chappy was hangry. Full feed.</td>
+  </tr>
+
+    </div>
+
          {% for record in records %}
     <div class="individual_record">
   <tr>
@@ -25,18 +55,9 @@
       <td>{{record.amountDispensed}}</td>
             <td>{{record.additionalInfo}}</td>
   </tr>
-            <!-- <img src="{{ record.thumb.url }}"> -->
+
     </div>
     {% endfor %}
-    <tr>
-      <td>x</td>
-<td>{{feed_weight}}</td>
-<td>{{feed_weight}}</td>
-<td>x</td>
-<td>x</td>
-<td>x</td>
-
-    </tr>
 
 </table>
 

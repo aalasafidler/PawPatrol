@@ -3,21 +3,6 @@ from .models import Record, Pet
 from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
 from . import forms
-import MySQLdb
-
-
-
-# cur = db.cursor()
-# cur.execute("SELECT * FROM customerDB.customer_details")
-#
-# for row in cur.fetchall():
-#     x = row[0]
-#     print(row[1])
-#     print(row[2])
-#
-# db.close()
-
-
 
 @login_required(login_url="/accounts/login/")
 def pets(request):
@@ -27,20 +12,7 @@ def pets(request):
 
 @login_required(login_url="/accounts/login/")
 def records(request):
-    db = MySQLdb.connect(host="pawpatroldb.cquggrydnjcx.eu-west-1.rds.amazonaws.com",
-                        user="Alan",
-                        passwd="pawpatrol2018",
-                        db="customerDB")
-    cur = db.cursor()
-    cur.execute("SELECT * FROM customerDB.customer_details")
 
-    for row in cur.fetchall():
-        print(row)
-        x = row[0]
-
-
-    feed_weight = x
-    db.close()
     thisauthor = request.user
     thisfeed = Record.objects.all()
     """
@@ -49,7 +21,7 @@ def records(request):
     totaldispensed = Record.objects.aggregate(Sum('amountDispensed'))"""
 
     records = Record.objects.filter(author=request.user)
-    return render(request, 'records/records.html', {'records': records, 'feed_weight': feed_weight, 'this-author': thisauthor, 'thisfeed': thisfeed},)
+    return render(request, 'records/records.html', {'records': records, 'this-author': thisauthor, 'thisfeed': thisfeed},)
 
 @login_required(login_url="/accounts/login/")
 def add_pet(request):
@@ -86,7 +58,12 @@ def record_create(request):
 def your_pet(request):
     pets = Pet.objects.filter(author=request.user)
     numberOfPets = len(pets)
-    return render(request, 'records/your-pet.html', {'pets': pets, 'number': numberOfPets},)
+    if numberOfPets == 0:
+        x = 1
+    else:
+        x = numberOfPets + 1
+
+    return render(request, 'records/your-pet.html', {'pets': pets, 'number': x},)
 
 def stats(request):
     numberofpets = Pet.objects.filter(author=request.user)
@@ -95,12 +72,12 @@ def stats(request):
     petNames = Pet.objects.filter(author=request.user)[j].petName
     thisauthor = request.user
     feeds = Record.objects.filter(author=request.user)
-    numberoffeeds = len(feeds)
+    numberoffeeds = len(feeds) + 3
 
     numberOfPets = len(pets)
     myRecords = Record.objects.filter(author=request.user)
-    totalleftover = myRecords.aggregate(Sum('amountLeftOver'))['amountLeftOver__sum']
-    totaldispensed = myRecords.aggregate(Sum('amountDispensed'))['amountDispensed__sum']
+    totalleftover = myRecords.aggregate(Sum('amountLeftOver'))['amountLeftOver__sum'] + 15
+    totaldispensed = myRecords.aggregate(Sum('amountDispensed'))['amountDispensed__sum'] + 250
 
     totalConsumed = totaldispensed - totalleftover
     avgconsumed = totalConsumed/numberoffeeds
