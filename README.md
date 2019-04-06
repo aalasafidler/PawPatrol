@@ -1,11 +1,8 @@
-# PawPatrol
- 
-1. Navigate into folder
-2. Run manage.oy runserver
-3. Navigate to http://127.0.0.1:8000/ 
-4. Other pages working are:
-  http://127.0.0.1:8000/records/
-  http://127.0.0.1:8000/admin
-  
-5. Pages added this week - login and logout.
-6. Pages to be added - personalized home pages upon sucessful login. Have all this on a previous version, must just move it over.
+## PawPatrol
+# Automated Pet Feeder
+
+Please create an account by clicking "sign up".
+
+You may add your pets to the database in the "add pets" section.
+
+You may manually record pet feeds in the "records" section.
