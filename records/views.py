@@ -7,7 +7,7 @@ import MySQLdb
 import datetime
 
 
-
+# To connect to a remote Database
 # cur = db.cursor()
 # cur.execute("SELECT * FROM customerDB.customer_details")
 #
@@ -18,47 +18,55 @@ import datetime
 #
 # db.close()
 
-
-
 @login_required(login_url="/accounts/login/")
 def pets(request):
     pets = Pet.objects.filter(author=request.user)
     numberOfPets = len(pets)
+    
     return render(request, 'records/pets.html', {'pets': pets}, numberOfPets)
 
 @login_required(login_url="/accounts/login/")
 def records(request):
-    db = MySQLdb.connect(host="pawpatroldb.cquggrydnjcx.eu-west-1.rds.amazonaws.com",
-                        user="Alan",
-                        passwd="pawpatrol2018",
-                        db="customerDB")
-    cur = db.cursor()
-    cur.execute("SELECT * FROM customerDB.customer_details")
-    x = 0
-    y = 0
-    for row in cur.fetchall():
-        print(row)
-        x = row[1]
-        y = row[2]
-
-    bowl_weight = x
-    feed_weight = y
-    db.close()
+    thisauthor = request.user
+    author = request.user
+    thisfeed = Record.objects.all()   
+    amountDispensed = Record.objects.get(feedID=6).amountDispensed
+    amountLeftOver = 0
+    feed_weight = 100
+    bowl_weight = 10
+    amountConsumed = amountLeftOver - amountDispensed
+    totaldispensed = Record.objects.aggregate(Sum('amountDispensed'))
+    records = Record.objects.filter(author=request.user)
     feed_id = 1001
     auth_id = 1
-    pet_name = 'Gregory'
+    pet_name = 'Your Pet\'s Name Here'
     dateTime = datetime.datetime.now()
 
-    thisauthor = request.user
-    thisfeed = Record.objects.all()
-    """
-    amountDispensed = Record.objects.get(feedID=6).amountDispensed
-    amountConsumed = amountLeftOver - amountDispensed
-    totaldispensed = Record.objects.aggregate(Sum('amountDispensed'))"""
-
-    records = Record.objects.filter(author=request.user)
     return render(request, 'records/records.html', {'records': records, 'feed_weight': feed_weight, 'bowl_weight': bowl_weight, 'feed_id': feed_id, 'auth_id': auth_id, 'pet_name': pet_name, 'dateTime': dateTime, 'this-author': thisauthor, 'thisfeed': thisfeed},)
 
+
+"""
+    # db = MySQLdb.connect(host="pawpatroldb.cquggrydnjcx.eu-west-1.rds.amazonaws.com",
+    #                     user="Alan",
+    #                     passwd="pawpatrol2018",
+    #                     db="customerDB")
+    # cur = db.cursor()
+    # cur.execute("SELECT * FROM customerDB.customer_details")
+    # x = 0
+    # y = 0
+    # for row in cur.fetchall():
+    #     print(row)
+    #     x = row[1]
+    #     y = row[2]
+
+    # bowl_weight = x
+    # feed_weight = y
+    # db.close()
+    # feed_id = 1001
+    # auth_id = 1
+    # pet_name = 'Gregory'
+    # dateTime = datetime.datetime.now()
+"""
 @login_required(login_url="/accounts/login/")
 def add_pet(request):
     thisauthor = request.user
